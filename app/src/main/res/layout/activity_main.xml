@@ -189,6 +189,7 @@
             android:layout_height="80dp"
             android:gravity="center"
             android:text="20°                 15°" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
