@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Погодное приложение</string>
+    <string name="weather_forecast">Погодное приложение</string>
+    <string name="saint_petersburg">Санкт-Петербург</string>
+    <string name="Прогноз_погоды">Прогноз погоды</string>
+    <string name="_6">6°С</string>
+    <string name="image_preview">Image_Preview</string>
+    <string name="Долгосрочный_прогноз">Долгосрочный прогноз</string>
+    <string name="Фев_7">Фев 7</string>
+    <string name="Фев_8">Фев 8</string>
+    <string name="Фев_9">Фев 9</string>
+    <string name="Фев_10">Фев 10</string>
+    <string name="Фев_11">Фев 11</string>
+    <string name="Поиск">Поиск...</string>
+    <string name="Выбрать_город">Выбрать город</string>
+    <string name="Настройки">Настройки</string>
+    <string name="Тема_приложения">Светлая/темная</string>
+    <string name="Настройки_тема">Сменить тему приложения</string>
 </resources>
