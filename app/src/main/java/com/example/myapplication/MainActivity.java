@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -35,6 +36,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String value= getIntent().getStringExtra("getData");
+
+        ((TextView)findViewById(R.id.textView7)).setText(value);
 
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(this);
