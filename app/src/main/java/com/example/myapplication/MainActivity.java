@@ -1,6 +1,10 @@
 package com.example.myapplication;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 
 import android.annotation.SuppressLint;
@@ -25,6 +29,7 @@ import java.util.HashMap;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button button4;
     Button button;
+    Button button3;
     String LOG = "log";
 
 
@@ -37,46 +42,51 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String value= getIntent().getStringExtra("getData");
 
+
+        String value= getIntent().getStringExtra("getData");
         ((TextView)findViewById(R.id.textView7)).setText(value);
+
 
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(this);
-
         button4 = (Button) findViewById(R.id.button4);
         button4.setOnClickListener(this);
+        button3 = (Button) findViewById(R.id.button3);
+        button3.setOnClickListener(this);
 
-        Toast.makeText(this, "onCreate", Toast.LENGTH_SHORT).show();
+
 
     }
+
+
 
     @Override
     protected void onStart() {
         Log.d(LOG, "onStart");
         super.onStart();
-        Toast.makeText(this, "onStart", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
     protected void onResume() {
         Log.d(LOG, "onResume");
         super.onResume();
-        Toast.makeText(this, "onResume", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
     protected void onPause() {
         Log.d(LOG, "onPause");
         super.onPause();
-        Toast.makeText(this, "onPause", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
     protected void onStop() {
         Log.d(LOG, "onStop");
         super.onStop();
-        Toast.makeText(this, "onStop", Toast.LENGTH_SHORT).show();
+
 
     }
 
@@ -84,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onRestart() {
         Log.d(LOG, "onRestart");
         super.onRestart();
-        Toast.makeText(this, "onRestart", Toast.LENGTH_SHORT).show();
+
 
     }
 
@@ -92,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onDestroy() {
         Log.d(LOG, "onDestroy");
         super.onDestroy();
-        Toast.makeText(this, "onDestroy", Toast.LENGTH_SHORT).show();
+
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -107,9 +117,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent1 = new Intent(this, Settings.class);
                 startActivity(intent1);
                 break;
+            case R.id.button3:
+                Fragment frag = new FragmentEmblem();
+                FragmentManager manager = getSupportFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.replace(R.id.fragment_frame,frag,"Test Fragment");
+                transaction.addToBackStack(null);
+                transaction.commit();
             default:
                 break;
         }
     }
-
 }

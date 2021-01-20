@@ -20,6 +20,7 @@ import java.util.HashMap;
 public class Search_city extends AppCompatActivity {
 
 
+
     String words[] = {"Санкт-Петербург", "Москва", "Екатеринбург", "Рязань", "Мурманск",
             "Якутск"};
 
@@ -29,6 +30,7 @@ public class Search_city extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_city);
+
 
 
         // адаптер
@@ -56,7 +58,7 @@ public class Search_city extends AppCompatActivity {
                         Intent i = new Intent(Search_city.this, MainActivity.class);
                         i.putExtra("getData",selected.toString());
                         startActivity(i);
-                        Toast.makeText(getBaseContext(), "Position = " + position, Toast.LENGTH_SHORT).show();
+
                 }
 
             }

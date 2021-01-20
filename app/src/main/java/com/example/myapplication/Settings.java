@@ -51,7 +51,7 @@ public class Settings extends AppCompatActivity {
     protected void onStart() {
 
         super.onStart();
-        Toast.makeText(this, "onStart", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
@@ -62,7 +62,7 @@ public class Settings extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("test", Context.MODE_PRIVATE);
         int myVariable = prefs.getInt("myVariable", 1);
 
-        Toast.makeText(this, "onResume", Toast.LENGTH_SHORT).show();
+
 
     }
 
@@ -77,7 +77,7 @@ public class Settings extends AppCompatActivity {
         ed.putBoolean("switchState", myswitch.isChecked());
         ed.apply();
 
-        Toast.makeText(this, "onPause", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
