@@ -2,57 +2,68 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Search_city extends AppCompatActivity {
-    public ListView lv;
 
-    //ListView Адаптер:
-    ArrayAdapter<String> adapter;
 
-    //Поиск EditText
-    EditText inputSearch;
 
-    //Строковый массив
-    ArrayList<HashMap<String, String>> words;
+    String words[] = {"Санкт-Петербург", "Москва", "Екатеринбург", "Рязань", "Мурманск",
+            "Якутск"};
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_city);
-        String words[] = {"Москва", "Санкт-Петербург", "Екатеринбург", "Рязань", "Мурманск",
-                "Якутск"};
 
-        lv = (ListView) findViewById(R.id.list_view);
-        inputSearch = (EditText) findViewById(R.id.inputSearch);
 
-        //Связываем данные массива с элементом ListView:
-        adapter = new ArrayAdapter<String>(this, R.layout.list_item, R.id.product_name, words);
-        lv.setAdapter(adapter);
 
-        inputSearch.addTextChangedListener(new TextWatcher() {
+        // адаптер
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, words);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        spinner.setAdapter(adapter);
+        // заголовок
+        spinner.setPrompt("Title");
+        // выделяем элемент
+        spinner.setSelection(0);
+        // устанавливаем обработчик нажатия
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
-                //Когда пользователь вводит какой-нибудь текст:
-                Search_city.this.adapter.getFilter().filter(cs);
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                String selected = parent.getItemAtPosition(position).toString();
+                switch (position) {
+                    case 0:
+
+                        return;
+                    default:
+
+                        Intent i = new Intent(Search_city.this, MainActivity.class);
+                        i.putExtra("getData",selected.toString());
+                        startActivity(i);
+
+                }
+
             }
-
             @Override
-            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
-                                          int arg3) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable arg0) {
+            public void onNothingSelected(AdapterView<?> arg0) {
             }
         });
     }

@@ -1,30 +1,34 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, IRVOnItemClick {
     Button button4;
     Button button;
     String LOG = "log";
+    private RecyclerView recyclerView;
+    private RecyclerDataAdapter adapter;
+
+private ArrayList<String> listData = new ArrayList<>(Arrays.asList("Понедельник 15С", "Вторник 15С","Среда 15С","Четверг 15С","Пятница 15С","Суббота 15С","Воскресенье 15С"));
+
+
+
 
 
 
@@ -36,58 +40,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        String value= getIntent().getStringExtra("getData");
+        ((TextView)findViewById(R.id.textView7)).setText(value);
+
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(this);
-
         button4 = (Button) findViewById(R.id.button4);
         button4.setOnClickListener(this);
 
-        Toast.makeText(this, "onCreate", Toast.LENGTH_SHORT).show();
+        initViews();
+        setupRecyclerView();
+    }
+
+    private void initViews(){
+        recyclerView = findViewById(R.id.recyclerView);
+    }
+    private void setupRecyclerView() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(
+                getBaseContext());
+        adapter = new RecyclerDataAdapter(listData, this);
+
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+
+
 
     }
 
     @Override
-    protected void onStart() {
-        Log.d(LOG, "onStart");
-        super.onStart();
-        Toast.makeText(this, "onStart", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onResume() {
-        Log.d(LOG, "onResume");
-        super.onResume();
-        Toast.makeText(this, "onResume", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onPause() {
-        Log.d(LOG, "onPause");
-        super.onPause();
-        Toast.makeText(this, "onPause", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onStop() {
-        Log.d(LOG, "onStop");
-        super.onStop();
-        Toast.makeText(this, "onStop", Toast.LENGTH_SHORT).show();
-
-    }
-
-    @Override
-    protected void onRestart() {
-        Log.d(LOG, "onRestart");
-        super.onRestart();
-        Toast.makeText(this, "onRestart", Toast.LENGTH_SHORT).show();
-
-    }
-
-    @Override
-    protected void onDestroy() {
-        Log.d(LOG, "onDestroy");
-        super.onDestroy();
-        Toast.makeText(this, "onDestroy", Toast.LENGTH_SHORT).show();
+    public void onItemClicked(String itemText) {
+        Toast.makeText(getBaseContext(), itemText, Toast.LENGTH_SHORT).show();
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -106,5 +88,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
-
 }
