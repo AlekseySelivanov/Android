@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
+import com.google.android.material.snackbar.Snackbar;
 
 
 
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String LOG = "log";
     private RecyclerView recyclerView;
     private RecyclerDataAdapter adapter;
+
 
 private ArrayList<String> listData = new ArrayList<>(Arrays.asList("Понедельник 15С", "Вторник 15С","Среда 15С","Четверг 15С","Пятница 15С","Суббота 15С","Воскресенье 15С"));
 
@@ -77,10 +79,14 @@ private ArrayList<String> listData = new ArrayList<>(Arrays.asList("Понеде
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button4:
+                Snackbar.make(v, "Выберите город!", Snackbar.LENGTH_LONG)
+                        .show();
                 Intent intent = new Intent(this, Search_city.class);
                 startActivity(intent);
                 break;
             case R.id.button:
+                Snackbar.make(v, "Настройки!", Snackbar.LENGTH_LONG)
+                        .show();
                 Intent intent1 = new Intent(this, Settings.class);
                 startActivity(intent1);
                 break;
