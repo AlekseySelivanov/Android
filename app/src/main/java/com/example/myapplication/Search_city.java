@@ -9,6 +9,8 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -18,53 +20,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Search_city extends AppCompatActivity {
-
-
-
-    String words[] = {"Санкт-Петербург", "Москва", "Екатеринбург", "Рязань", "Мурманск",
-            "Якутск"};
-
-
+    private Button button2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_city);
+       AutoCompleteTextView textViewSend = (AutoCompleteTextView) findViewById(R.id.textViewSend);
 
 
+        String[] countries = getResources().getStringArray(R.array.city_array);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, countries);
+        textViewSend.setAdapter(adapter);
+        button2 = (Button) findViewById(R.id.button2);
 
-        // адаптер
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, words);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        button2.setOnClickListener(v -> {
+            Intent intent2 = new Intent(this, MainActivity.class);
+            startActivity(intent2);
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        spinner.setAdapter(adapter);
-        // заголовок
-        spinner.setPrompt("Title");
-        // выделяем элемент
-        spinner.setSelection(0);
-        // устанавливаем обработчик нажатия
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view,
-                                       int position, long id) {
-                String selected = parent.getItemAtPosition(position).toString();
-                switch (position) {
-                    case 0:
-
-                        return;
-                    default:
-
-                        Intent i = new Intent(Search_city.this, MainActivity.class);
-                        i.putExtra("getData",selected.toString());
-                        startActivity(i);
-
-                }
-
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-            }
         });
     }
 }

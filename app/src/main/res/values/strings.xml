@@ -16,4 +16,13 @@
     <string name="Настройки">Настройки</string>
     <string name="Тема_приложения">Светлая/темная</string>
     <string name="Настройки_тема">Сменить тему приложения</string>
+
+    <string-array name="city_array">
+        <item>Санкт-Петербург</item>
+        <item>Москва</item>
+        <item>Ярославль</item>
+        <item>Пермь</item>
+        <item>Мурманск</item>
+        ...
+    </string-array>
 </resources>
