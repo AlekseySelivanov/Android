@@ -1,245 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="0dp"
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-        <TableRow
-            android:id="@+id/tableRow4"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal">
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+        </androidx.appcompat.widget.Toolbar>
 
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/Прогноз_погоды"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:typeface="serif" />
-        </TableRow>
+    </com.google.android.material.appbar.AppBarLayout>
 
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="52dp"
-            android:layout_height="169dp">
+    <include layout="@layout/content_main" />
 
-            <TextView
-
-                android:layout_width="match_parent"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/TextView04"
-                android:layout_width="wrap_content"
-                android:padding="2dp"
-                android:text="@string/Фев_7"
-                android:textStyle="bold"
-                android:typeface="serif" />
-
-            <TextView
-                android:id="@+id/TextView03"
-                android:layout_width="match_parent"
-                android:padding="2dp"
-                android:text="@string/Фев_8"
-                android:textStyle="bold"
-                android:typeface="serif" />
-
-            <TextView
-                android:id="@+id/TextView02"
-                android:layout_width="match_parent"
-                android:padding="2dp"
-                android:text="@string/Фев_9"
-                android:textStyle="bold"
-                android:typeface="serif" />
-
-            <TextView
-                android:id="@+id/TextView01"
-                android:layout_width="match_parent"
-                android:padding="2dp"
-                android:text="@string/Фев_10"
-                android:textStyle="bold"
-                android:typeface="serif" />
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="match_parent"
-                android:padding="2dp"
-                android:text="@string/Фев_11"
-                android:textStyle="bold"
-                android:typeface="serif" />
-        </TableRow>
-
-        <TableRow
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-
-                android:layout_width="match_parent"
-                android:paddingLeft="2dp"
-                android:text="День"
-                android:textStyle="bold" />
-
-            <TextView
-
-                android:gravity="center_horizontal"
-                android:text="28°С" />
-
-            <TextView
-
-                android:gravity="center_horizontal"
-                android:text="26°С" />
-
-            <TextView
-
-                android:gravity="center_horizontal"
-                android:text="23°С" />
-
-            <TextView
-
-                android:gravity="center_horizontal"
-                android:text="17°С" />
-
-            <TextView
-
-                android:gravity="center_horizontal"
-                android:text="19°С" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:paddingLeft="2dp"
-                android:text="Ночь"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:gravity="center_horizontal"
-                android:text="15°С" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:gravity="center_horizontal"
-                android:text="14°С" />
-
-            <TextView
-
-                android:gravity="center_horizontal"
-                android:text="3°С" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:gravity="center_horizontal"
-                android:text="5°С" />
-
-            <TextView
-
-                android:gravity="center_horizontal"
-                android:text="@string/_6" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="@string/Долгосрочный_прогноз"
-                android:textStyle="bold" />
-
-
-        </TableRow>
-
-    </TableLayout>
-
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/teal_700"
-        android:fontFamily="monospace"
-        android:gravity="center"
-        android:text="@string/weather_forecast"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="94dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5">
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="95dp"
-            android:layout_weight="1"
-            android:background="@color/design_default_color_secondary"
-            android:gravity="center"
-            android:text="@string/saint_petersburg"
-            android:textSize="18sp"
-            android:textStyle="italic" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="159dp"
-            android:layout_height="94dp"
-            android:layout_weight="1"
-            android:background="@color/design_default_color_secondary"
-            android:contentDescription="@string/image_preview"
-            app:srcCompat="@drawable/sun" />
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/Выбрать_город"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:text="@string/Настройки"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
