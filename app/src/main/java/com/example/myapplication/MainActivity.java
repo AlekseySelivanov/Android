@@ -9,10 +9,15 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import com.google.android.material.snackbar.Snackbar;
@@ -25,9 +30,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String LOG = "log";
     private RecyclerView recyclerView;
     private RecyclerDataAdapter adapter;
+//    readSettings();
+//    initView();
 
 
-private ArrayList<String> listData = new ArrayList<>(Arrays.asList("Понедельник 15С", "Вторник 15С","Среда 15С","Четверг 15С","Пятница 15С","Суббота 15С","Воскресенье 15С"));
+
+    private ArrayList<String> listData = new ArrayList<>(Arrays.asList("Понедельник 15С", "Вторник 15С","Среда 15С","Четверг 15С","Пятница 15С","Суббота 15С","Воскресенье 15С"));
 
 
 
@@ -40,7 +48,7 @@ private ArrayList<String> listData = new ArrayList<>(Arrays.asList("Понеде
 
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.content_main);
 
         String value= getIntent().getStringExtra("getData");
         ((TextView)findViewById(R.id.textView7)).setText(value);
@@ -53,6 +61,74 @@ private ArrayList<String> listData = new ArrayList<>(Arrays.asList("Понеде
         initViews();
         setupRecyclerView();
     }
+
+    private void initView() {
+        initToolbar();
+//        initButtonMain();
+//        initButtonFavorite();
+//        initButtonSettings();
+//        initButtonBack();
+    }
+
+    private void initToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+    }
+
+    private void setSupportActionBar(Toolbar toolbar) {
+    }
+
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Обработка выбора пункта меню приложения (активити)
+//        int id = item.getItemId();
+//
+//        switch(id){
+//            case R.id.action_settings:
+//                addFragment(new SettingsFragment());
+//                return true;
+//            case R.id.action_main:
+//                addFragment(new MainFragment());
+//                return true;
+//            case R.id.action_favorite:
+//                addFragment(new FavoriteFragment());
+//                return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Здесь определяем меню приложения (активити)
+        getMenuInflater().inflate(R.menu.menu, menu);
+        MenuItem search = menu.findItem(R.id.action_search); // поиск пункта меню поиска
+        SearchView searchText = (SearchView) search.getActionView(); // строка поиска
+        searchText.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            // реагирует на конец ввода поиска
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Toast.makeText(MainActivity.this, query, Toast.LENGTH_SHORT).show();
+                return true;
+            }
+            // реагирует на нажатие каждой клавиши
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return true;
+            }
+        });
+
+        return true;
+    }
+
+
+
+
+
+
+
+
+
 
     private void initViews(){
         recyclerView = findViewById(R.id.recyclerView);

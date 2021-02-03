@@ -16,6 +16,11 @@
     <string name="Настройки">Настройки</string>
     <string name="Тема_приложения">Светлая/темная</string>
     <string name="Настройки_тема">Сменить тему приложения</string>
+    <string name="settings">settings</string>
+    <string name="main">main</string>
+    <string name="favorite">favourite</string>
+    <string name="search">search</string>
+    <string name="back">back</string>
 
     <string-array name="city_array">
         <item>Санкт-Петербург</item>
