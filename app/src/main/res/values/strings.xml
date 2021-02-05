@@ -16,4 +16,24 @@
     <string name="Настройки">Настройки</string>
     <string name="Тема_приложения">Светлая/темная</string>
     <string name="Настройки_тема">Сменить тему приложения</string>
+    <string name="settings">settings</string>
+    <string name="main">main</string>
+    <string name="favorite">favourite</string>
+    <string name="search">search</string>
+    <string name="back">back</string>
+    <string name="city">city</string>
+    <string name="temperature">temprature</string>
+    <string name="pressure">pressure</string>
+    <string name="humidity">humidity</string>
+    <string name="wind_speed">wind_speed</string>
+    <string name="refresh">refresh</string>
+
+    <string-array name="city_array">
+        <item>Санкт-Петербург</item>
+        <item>Москва</item>
+        <item>Ярославль</item>
+        <item>Пермь</item>
+        <item>Мурманск</item>
+        …
+    </string-array>
 </resources>
